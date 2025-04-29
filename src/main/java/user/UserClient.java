@@ -5,33 +5,34 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
+import static user.Endpoints.*;
 
 public class UserClient {
     static {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
     }
 
-    public static Response createUser(String email, String password, String name) {
-        UserData newUserData = new UserData(email, password, name);
+    public static Response createNewUser(UserData user) {
         return given()
                 .contentType(ContentType.JSON)
-                .body(newUserData)
+                .body(user)
                 .when()
-                .post("api/auth/register");
+                .post(CREATE_USER);
     }
 
     public static Response deleteUser(String accessToken) {
         return given()
                 .header("Authorization", accessToken)
                 .when()
-                .delete("api/auth/user");
+                .delete(DELETE_USER);
     }
 
-    public static String getAccessToken(String email, String password) {
+    public static String getAccessToken(UserData user) {
         return given()
-                .header("Content-type", "application/json")
-                .body("{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}")
-                .post("api/auth/login")
+                .contentType(ContentType.JSON)
+                .body(user) // передаем объект
+                .when()
+                .post(USER_LOGIN)
                 .then()
                 .extract()
                 .path("accessToken");

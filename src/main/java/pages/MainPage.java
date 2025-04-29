@@ -16,7 +16,7 @@ public class MainPage {
     private final By personalAccountButton = By.xpath("//a[@href='/account']");
     private final By enterAccountButton = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By createOrderButton = By.xpath("//button[text()='Оформить заказ']");
-    private final By bunsButton = By.xpath("//div[@class = 'tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Булки']");
+    private final By bunsButton = By.xpath("//span[contains(text(), 'Булки')]");
     private final By bunsHeader = By.xpath("//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Булки']");
     private final By sousesButton = By.xpath("//span[text()='Соусы']");
     private final By sousesHeader = By.xpath("//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Соусы']");
@@ -90,4 +90,9 @@ public class MainPage {
     public String getToppingsHeader() {
         return driver.findElement(toppingsHeader).getText();
     }
+    public void waitUntilMainPAgeUrlIsVisible(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.urlToBe(MAIN_PAGE_URL));
+    }
+
 }

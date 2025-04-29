@@ -8,9 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import user.UserClient;
 import user.UserData;
 
-import java.time.Duration;
-
-import static pages.MainPage.MAIN_PAGE_URL;
 
 
 public class Steps {
@@ -119,7 +116,7 @@ public class Steps {
     @Step("Создание пользователя")
     public static void createUser(String email, String password, String name) {
         UserData user = new UserData(email, password, name);
-        Response response = UserClient.createUser(email, password, name);
+        Response response = UserClient.createNewUser(user);
     }
 
 

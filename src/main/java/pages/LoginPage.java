@@ -50,4 +50,8 @@ public class LoginPage {
     public void clickMainPageButton(){
         driver.findElement(mainPageButton).click();
     }
+    public void waitUntilLoginPageIsVisible(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.urlToBe(LOGIN_PAGE_URL));
+    }
 }

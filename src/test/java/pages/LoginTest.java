@@ -1,5 +1,6 @@
 package pages;
 
+import browser.BaseClass;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
@@ -20,8 +21,10 @@ public class LoginTest extends BaseClass {
         Steps steps = new Steps(driver);
         steps.clickEnterAccountButton();
         steps.loginPersonalAccount(email, password);
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.urlToBe(MAIN_PAGE_URL));
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.waitUntilMainPAgeUrlIsVisible();
+
         String actualUrl = driver.getCurrentUrl();
         assertEquals("Должна быть главная страница",MAIN_PAGE_URL, actualUrl);
     }
@@ -33,8 +36,10 @@ public class LoginTest extends BaseClass {
         Steps steps = new Steps(driver);
         steps.clickPersonalAccountButton();
         steps.loginPersonalAccount(email, password);
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.urlToBe(MAIN_PAGE_URL));
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.waitUntilMainPAgeUrlIsVisible();
+
         String actualUrl = driver.getCurrentUrl();
         assertEquals("Должна быть главная страница",MAIN_PAGE_URL, actualUrl);
     }
@@ -49,8 +54,10 @@ public class LoginTest extends BaseClass {
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.clickLoginLButton();
         steps.loginPersonalAccount(email, password);
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.urlToBe(MAIN_PAGE_URL));
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.waitUntilMainPAgeUrlIsVisible();
+
         String actualUrl = driver.getCurrentUrl();
         assertEquals("Должна быть главная страница",MAIN_PAGE_URL, actualUrl);
     }
@@ -63,8 +70,10 @@ public class LoginTest extends BaseClass {
         steps.clickPersonalAccountButton();
         steps.clickLinkPasswordRecoveryPage();
         steps.loginPersonalAccount(email, password);
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.urlToBe(MAIN_PAGE_URL));
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.waitUntilMainPAgeUrlIsVisible();
+
         String actualUrl = driver.getCurrentUrl();
         assertEquals("Должна быть главная страница",MAIN_PAGE_URL, actualUrl);
     }

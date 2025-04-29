@@ -1,10 +1,11 @@
 package pages;
 
+import browser.BaseClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class RegistrationFieldsErrorsTest extends BaseClass{
+public class RegistrationFieldsErrorsTest extends BaseClass {
     private static final String EXPECTED_ERROR_PASSWORD = "Некорректный пароль";
     String errorPassword = "1111";
 @Test

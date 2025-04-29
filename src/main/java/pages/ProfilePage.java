@@ -36,4 +36,8 @@ public class ProfilePage {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(exitButton));
     }
+    public void waitUntilProfilePageIsVisible(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.urlToBe(PROFILE_PAGE_URL));
+    }
 }
