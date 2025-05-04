@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import user.UserClient;
 import user.UserData;
 
+import static pages.LoginPage.LOGIN_PAGE_URL;
 
 
 public class Steps {
@@ -99,7 +100,7 @@ public class Steps {
         registerPage.clickRegistrationButton();
 
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.urlToBe("https://stellarburgers.nomoreparties.site/login"));
+                .until(ExpectedConditions.urlToBe(LOGIN_PAGE_URL));
     }
 
 

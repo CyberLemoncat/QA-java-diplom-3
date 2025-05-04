@@ -6,6 +6,7 @@ import user.UserClient;
 import user.UserData;
 
 import static org.junit.Assert.assertEquals;
+import static user.Endpoints.USER_LOGIN;
 
 public class RegistrationTest extends BaseClass {
     private String accessToken;
@@ -28,7 +29,7 @@ public class RegistrationTest extends BaseClass {
         steps.inputCorrectRegistrationData(name, email, password);
 
         String actualUrl = driver.getCurrentUrl();
-        assertEquals("Должна быть страница входа", "https://stellarburgers.nomoreparties.site/login", actualUrl);
+        assertEquals("Должна быть страница входа", USER_LOGIN, actualUrl);
 
         accessToken = UserClient.getAccessToken(user);
 
